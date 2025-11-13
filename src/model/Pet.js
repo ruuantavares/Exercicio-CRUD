@@ -1,8 +1,8 @@
 import BancoDados from "../config/database.js";
 
-class Petshop {
+class Pet {
   constructor() {
-    this.model = BancoDados.db.define("clientes", {
+    this.model = BancoDados.db.define("Pets", {
       id: {
         type: BancoDados.db.Sequelize.INTEGER,
         primaryKey: true,
@@ -11,11 +11,13 @@ class Petshop {
       nome: {
         type: BancoDados.db.Sequelize.STRING,
       },
-      telefone: {
-        type: BancoDados.db.Sequelize.STRING,
-        unique: true,
+      raca: {
+        type: BancoDados.db.Sequelize.STRING
       },
+      tutor: {
+        type:BancoDados.db.Sequelize.INTEGER
+      }
     });
   }
 }
-export default new Petshop().model;
+export default new Pet().model;

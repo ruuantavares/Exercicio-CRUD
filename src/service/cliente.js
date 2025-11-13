@@ -1,8 +1,8 @@
-import Petshop from "../model/petshop.js";
+import Cliente from "../model/cliente.js";
 
-class ServicePetshop {
+class ServiceCliente {
   async FindAll() {
-    return Petshop.findAll();
+    return Cliente.findAll();
   }
 
   async FindOne(id) {
@@ -10,13 +10,13 @@ class ServicePetshop {
       throw new Error("Favor informar um ID válido");
     }
 
-    const petshop = await Petshop.findByPk(id);
+    const cliente = await Cliente.findByPk(id);
 
-    if (!petshop) {
+    if (!cliente) {
       throw new Error(`Cliente ${id} não encontrado`);
     }
 
-    return petshop;
+    return cliente;
   }
 
   async Create(nome, telefone) {
@@ -24,7 +24,7 @@ class ServicePetshop {
       throw new Error("Favor preencher todos os dados");
     }
 
-    await Petshop.create({
+    await Cliente.create({
       nome,
       telefone,
     });
@@ -35,7 +35,7 @@ class ServicePetshop {
       throw new Error("Favor preencher todos os dados");
     }
 
-    const clienteAntigo = await Petshop.findByPk(id);
+    const clienteAntigo = await Cliente.findByPk(id);
 
     if (!clienteAntigo) {
       throw new Error("Cliente não encontrado");
@@ -51,14 +51,14 @@ class ServicePetshop {
       throw new Error("Favor informar um ID");
     }
 
-    const petshop = await Petshop.findByPk(id);
+    const cliente = await Cliente.findByPk(id);
 
-    if (!petshop) {
+    if (!cliente) {
       throw new Error(`Cliente ${id} não encontrado`);
     }
 
-    return petshop.destroy();
+    return Cliente.destroy();
   }
 }
 
-export default new ServicePetshop();
+export default new ServiceCliente();
